@@ -985,8 +985,16 @@ func main() {
 		ExposedHeaders:   []string{"Authorization"},
 		AllowCredentials: true,
 	})
+	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	handler := c.Handler(rateLimitedRouter)
 	fmt.Println("Server running on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", handler))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080" // Использовать порт 8080, если переменная окружения PORT не установлена
+	}
+	fmt.Printf("Server running on port %s\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, handler))
+
 }
