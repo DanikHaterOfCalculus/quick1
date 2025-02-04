@@ -999,3 +999,4 @@ func main() {
 
 	// Запуск сервера на указанном порту
 	log.Fatal(http.ListenAndServe(":"+port, handler))
+}
