@@ -990,7 +990,7 @@ func main() {
 	handler := c.Handler(rateLimitedRouter)
 
 	// Используем жестко заданный порт 8080
-	port := "8080"
+	port := "10000"
 	fmt.Printf("Server running on port %s\n", port)
 
 	// Запуск сервера на порту 8080
