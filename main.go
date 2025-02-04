@@ -495,7 +495,7 @@ func sendEmailConfirmation(email, token string) {
 	m.SetHeader("From", "turzhanov.danial@gmail.com")
 	m.SetHeader("To", email)
 	m.SetHeader("Subject", "Подтвердите вашу регистрацию")
-	m.SetBody("text/html", fmt.Sprintf("<p>Для подтверждения регистрации нажмите <a href='http://localhost:8080/confirm?token=%s'>здесь</a></p>", token))
+	m.SetBody("text/html", fmt.Sprintf("<p>Для подтверждения регистрации нажмите <a href='http://localhost:10000/confirm?token=%s'>здесь</a></p>", token))
 
 	// Настройки SMTP-сервера
 	smtpServer := "smtp.gmail.com"
