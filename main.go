@@ -976,7 +976,7 @@ func main() {
 	r.HandleFunc("/orders/by-user", getOrdersByUserID).Methods("GET")
 	r.HandleFunc("/support", sendSupportMessage).Methods("POST")
 	r.HandleFunc("/support/messages", getSupportMessages).Methods("GET")
-	r.HandleFunc("/support/messages", getSupportMessages).Methods("GET")
+
 	rateLimitedRouter := rateLimitMiddleware(r)
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"*"},
