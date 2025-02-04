@@ -988,13 +988,14 @@ func main() {
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	handler := c.Handler(rateLimitedRouter)
-	fmt.Println("Server running on port 8080")
-	log.Fatal(http.ListenAndServe(":8080", handler))
+
+	// Получение порта из переменной окружения или использование 8080 по умолчанию
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8080" // Использовать порт 8080, если переменная окружения PORT не установлена
+		port = "8080" // Используем 8080, если переменная окружения PORT не установлена
 	}
-	fmt.Printf("Server running on port %s\n", port)
-	log.Fatal(http.ListenAndServe(":"+port, handler))
 
-}
+	fmt.Printf("Server running on port %s\n", port)
+
+	// Запуск сервера на указанном порту
+	log.Fatal(http.ListenAndServe(":"+port, handler))
